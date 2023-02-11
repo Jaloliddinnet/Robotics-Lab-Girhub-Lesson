@@ -27,6 +27,35 @@ namespace WebApplicationGitHub.Controllers
             await context.Kompyuterlars.AddAsync(kompyuter);
             await context.SaveChangesAsync();
             return Ok(kompyuter);
+
+[Route("api/[controller]/[action]")]
+    [ApiController]
+    public class Values1Controller : ControllerBase
+    {
+        AppDbContext db;
+        public Values1Controller(AppDbContext db)
+        {
+            this.db = db;
+        }
+        [HttpGet]
+        public async Task<IActionResult> ShowUniver()
+        {
+            return Ok(await db.universities.ToListAsync());
+        }
+        [HttpPost]
+        public async Task<IActionResult> AddUniver([FromForm]University university)
+        {
+            await db.universities.AddAsync(university);
+            await db.SaveChangesAsync(); 
+            return Ok(university);
+        }
+        [HttpDelete("id")]
+        public async Task<IActionResult> DelUniver(int id)
+        {
+            var univer = await db.universities.FirstOrDefaultAsync(p => p.id == id);
+            db.universities.Remove(univer);
+            await db.SaveChangesAsync();
+            return Ok("O'chirildi !");
         }
     }
 }

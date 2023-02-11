@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace Web.Data.Models
 {
-    internal class Car
+    public class Car
     {
+        public int Id { get; set; }
+        public string Modeli { get; set; }
+        public string Rangi { get; set; }
+        public int Narxi { get; set; }
+        public string Nomeri { get; set; }
     }
 }

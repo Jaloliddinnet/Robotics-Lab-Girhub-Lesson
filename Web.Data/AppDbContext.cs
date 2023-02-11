@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Web.Data.Models;
 
 namespace WebApplicationGitHub
 {
@@ -6,6 +7,6 @@ namespace WebApplicationGitHub
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
         
-
+        public DbSet<Kompyuterlar> Kompyuterlars { get; set; }
     }
 }

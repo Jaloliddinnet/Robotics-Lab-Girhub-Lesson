@@ -5,12 +5,13 @@ using Web.Data.Models;
 
 namespace WebApplicationGitHub.Controllers
 {
+
     [Route("api/[controller]")]
     [ApiController]
-    public class CarController : ControllerBase
+    public class KompyuterController : ControllerBase
     {
         AppDbContext context;
-        public CarController(AppDbContext context)
+        public KompyuterController(AppDbContext context)
         {
             this.context = context;
         }
@@ -18,16 +19,15 @@ namespace WebApplicationGitHub.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            return Ok(await context.Mashinalar.ToListAsync());
+            return Ok(await context.Kompyuterlars.ToListAsync());
         }
-
         [HttpPost]
-        public async Task<IActionResult> Add([FromForm]Car car)
+        public async Task<IActionResult> Add([FromForm] Kompyuterlar kompyuter)
         {
-            await context.Mashinalar.AddAsync(car);
+            await context.Kompyuterlars.AddAsync(kompyuter);
             await context.SaveChangesAsync();
-
-            return Ok();
+            return Ok(kompyuter);
         }
     }
+
 }

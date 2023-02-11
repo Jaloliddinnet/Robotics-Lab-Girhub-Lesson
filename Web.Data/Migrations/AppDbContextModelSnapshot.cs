@@ -21,14 +21,37 @@ namespace Web.Data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("Web.Data.Models.Kompyuterlar", b =>
-                {
+            modelBuilder.Entity("Web.Data.Models.Futbol", b =>
+              {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                     b.Property<int>("Age")
+                        .HasColumnType("int");
 
+                    b.Property<string>("Komanda")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+                        b.Property<long>("Oylik")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("futbolist");
+                        
+                        
+
+
+            modelBuilder.Entity("Web.Data.Models.Kompyuterlar", b =>
+            {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    
                     b.Property<string>("modeli")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -48,6 +71,7 @@ namespace Web.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Kompyuterlars");
+
             modelBuilder.Entity("Web.Data.Models.University", b =>
                 {
                     b.Property<int>("id")

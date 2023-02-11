@@ -7,6 +7,9 @@ namespace WebApplicationGitHub
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
         
-        DbSet<Car> cars { get; set; }
+        
+
+       public DbSet<Futbol> futbolist { get; set; }
+
     }
 }

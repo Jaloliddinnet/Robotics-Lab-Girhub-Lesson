@@ -28,6 +28,14 @@ namespace WebApplicationGitHub.Controllers
             await context.SaveChangesAsync();
             return Ok(kompyuter);
         }
+        [HttpDelete]
+        public async Task<IActionResult> DeleteKompyuter(int id)
+        {
+            var kompyuter = await context.universities.FirstOrDefaultAsync(p => p.id == id);
+            context.universities.Remove(kompyuter);
+            await context.SaveChangesAsync();
+            return Ok("Deleted");
+        }
     }
 
 }
